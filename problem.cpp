@@ -5,9 +5,26 @@
 using namespace std;
 
 
-void solve()
+void solve(int x, int y)
 {
-    
+    int count = 0;
+
+    if (x < y){
+        for(int i = x + 1; i < y; i++){
+            if((i % 2) != 0){
+                count += i;
+            }
+        }
+    }
+
+    else{
+        for(int i = x - 1; i > y; i--){
+            if((i % 2) != 0){
+                count += i;
+            }
+        }
+    }
+    cout << count << '\n';
 }
 
 int main()
@@ -15,13 +32,13 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int s, n, x, y;
-    cin >> s >> n;
+    int n, x, y;
+    cin >> n;
     
     while (n--)
     {
         cin >> x >> y;
-       solve(s, n, x, y);
+       solve(x, y);
         // cout << solution;
     }
 
