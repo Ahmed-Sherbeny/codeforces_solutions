@@ -8,75 +8,53 @@ using namespace std;
 
 void solve(){
       ll a, b, c, d;
-
       cin >> a >> b >> c >> d;
 
-      char op[3] = {'+', '-', '*'};
+      vector<ll> nums = {a, b, c};
 
+      sort(nums.begin(), nums.end());
+      char ops[3] = {'+', '-', '*'};
 
-      ll sol;
-      for(int i = 0; i < 3; i++){
-            for(int j = 0; j < 3; j++){
-                  ll left, right;
+      do {
+            for (int i = 0; i < 3; i++) {
+                  for (int j = 0; j < 3; j++) {
+                        if(i == j){
+                              continue;
+                        }
+                        ll left, right;
 
+                        // (nums[0] op1 nums[1]) op2 nums[2]
+                        if (ops[i] == '+') left = nums[0] + nums[1];
+                        else if (ops[i] == '-') left = nums[0] - nums[1];
+                        else left = nums[0] * nums[1];
 
-                  // (a op 1 b) op 2 c
-                  if(op[i] == '+'){
-                        left = a + b;
-                  }
-                  else if(op[i] == '-'){
-                        left = a - b;
-                  }
-                  else{
-                        left = a * b;
-                  }
+                        if (ops[j] == '+') right = left + nums[2];
+                        else if (ops[j] == '-') right = left - nums[2];
+                        else right = left * nums[2];
 
-                  if(op[j] == '+'){
-                        right = b + c;
-                  }
-                  else if(op[j] == '-'){
-                        right = b - c;
-                  }
-                  else{
-                        right = b * c;
-                  }
+                        if (right == d) {
+                              cout << "YES\n";
+                              return;
+                        }
 
-                  if(right == d){
-                        cout << "YES";
-                        return;
-                  }
+                        // nums[0] op1 (nums[1] op2 nums[2])
+                        if (ops[j] == '+') right = nums[1] + nums[2];
+                        else if (ops[j] == '-') right = nums[1] - nums[2];
+                        else right = nums[1] * nums[2];
 
-                  // a op1 (b op 2 c)
-                  if(op[j] == '+'){
-                        right = b + c;
-                  }
-                  else if(op[j] == '-'){
-                        right = b - c;
-                  }
-                  else{
-                        right = b * c;
-                  }
+                        if (ops[i] == '+') left = nums[0] + right;
+                        else if (ops[i] == '-') left = nums[0] - right;
+                        else left = nums[0] * right;
 
-                  if(op[i] == '+'){
-                        left = a + right;
+                        if (left == d) {
+                              cout << "YES\n";
+                              return;
+                        }
                   }
-                  else if(op[i] == '-'){
-                        left = a - right;
-                  }
-                  else{
-                        left = a * right;
-                  }
-
-                  if(left == d){
-                        cout << "YES";
-                        return;
-                  }
-
             }
-      }
+      } while (next_permutation(nums.begin(), nums.end()));
 
-      cout << "NO";
-      return;
+      cout << "NO\n";
 }
 
 int main(void)
