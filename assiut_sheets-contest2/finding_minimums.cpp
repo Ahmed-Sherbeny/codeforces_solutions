@@ -6,34 +6,15 @@
 
 using namespace std;
 
+double log_n(double x, double base) {
+    return log(x) / log(base);
+}
+
 void solve(){
-      long n, k;
-      cin >> n >> k;
+      ll id;
+      cin >> id;
 
-      ll arr[n];
-
-      for(ll i = 0; i < n; i++){
-            cin >> arr[i];
-      }
-
-      ll Min = arr[0];
-      for(ll i = 0; i < n; i++){
-            if(arr[i] < Min){
-                  Min = arr[i];
-            }
-
-            if((i + 1) % k == 0){
-                  if((i + 1) % k == 0 && (i + 1) == n){
-                        cout << Min;
-                        return;
-                  }
-                  cout << Min << " ";
-                  Min = arr[i + 1];
-            }
-            else if((i + 1) % k != 0 && (i + 1) == n){
-                  cout << Min;
-            }
-      }
+      for(ll i = 0; )
 }
 
 int main(void)
