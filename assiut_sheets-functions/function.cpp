@@ -6,16 +6,24 @@
 
 using namespace std;
 
-void solve(){
-    int a, b, c, d;
-    cin >> a >> b >> c >> d;
-    
-    if(a != b || b != c || c != d){
-      cout << "NO\n";
+ll solve(){
+    int x, n;
+    cin >> x >> n;
+
+    ll sum = 0;
+    if(n % 2 == 0){
+      for(int i = 2; i <= n; i += 2){
+            sum += pow(x, i);
+      }
     }
+
     else{
-      cout << "YES\n";
+      for(int i = 2; i < n; i += 2){
+            sum += pow(x, i);
+      }
     }
+
+    return sum;
 }
 
 int main(void)
@@ -23,14 +31,14 @@ int main(void)
       ios_base::sync_with_stdio(false);
       cin.tie(NULL);
 
-      int n;
-      cin >> n;
+      int n = 1;
+      // cin >> n;
       // double X;
       // cin >> X;
 
       while (n--)
       {
-            solve();
+            cout << solve();
       }
 
       return 0;

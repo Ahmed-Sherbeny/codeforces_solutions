@@ -9,17 +9,22 @@ using namespace std;
 void solve(){
       int n;
       cin >> n;
-    string number;
-    cin >> number;
 
-    int sum = 0;
-    for(int i = 0; i < number.size(); i++){
-      int num = number[i] - '0';
-      sum += num;
-    }
-    
-    cout << sum;
+      int arr[n];
+      for(int i = 0; i < n; i++){
+            cin >> arr[i];
+      }
 
+      int ops = 0;
+      for(int i = 0; i < n; i++){
+            if(arr[i] % 2 != 0){
+                  cout << ops;
+                  return;
+            }
+
+            arr[i] /= 2;
+      }
+      
 }
 
 int main(void)
@@ -27,8 +32,8 @@ int main(void)
       ios_base::sync_with_stdio(false);
       cin.tie(NULL);
 
-      int n = 1;
-      // cin >> n;
+      int n;
+      cin >> n;
       // double X;
       // cin >> X;
 
