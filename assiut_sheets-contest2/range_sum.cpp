@@ -7,6 +7,7 @@ using namespace std;
 
 
 ll rangeSum(ll L, ll R) {
+    if(L > R) swap(L, R);
     ll sumR = R * (R + 1) / 2;
     ll sumL = (L - 1) * L / 2;
     return sumR - sumL;
